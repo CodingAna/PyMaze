@@ -3,7 +3,7 @@ from os import listdir
 
 class Maze:
     '''
-    PyMaze Version 1.2.2
+    PyMaze Version 1.2.2.1
     '''
     def checkLevel(self, path: str = '.\\levels\\', level: str = None) -> list[bool, dict]:
         if not level: return None
@@ -21,6 +21,7 @@ class Maze:
             if parsed['metadata'].get('endy') == None: valid = False
             if parsed.get('maze') == None: valid = False
             if not valid: parsed = None
+            else: print ('valid')
             return [valid, parsed]
     
     def checkLevels(self, path: str = '.\\levels\\') -> dict[str: dict[str: str]]:
@@ -33,7 +34,7 @@ class Maze:
         return valid
     
     def __init__(self, level: str = '0', watchsize: int = 5):
-        self.VERSION = '1.2.2'
+        self.VERSION = '1.2.2.1'
         self.max_level = len(self.checkLevels())
         self.watchsize = watchsize if watchsize in [3,5] else 5
         check = self.checkLevel(level=level)
@@ -104,3 +105,6 @@ class Maze:
     def nextLevel(self) -> str:
         if self.checkLevels().get(str(int(self.level)+1)): return str(int(self.level)+1)
         return ''
+    
+    def putLevelData(self, mazeLevel: list[list[str]]) -> None:
+        self.maze = mazeLevel #Validate this
