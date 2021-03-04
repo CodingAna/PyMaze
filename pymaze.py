@@ -107,4 +107,4 @@ class Maze:
         return ''
     
     def putLevelData(self, mazeLevel: list[list[str]]) -> None:
-        self.maze = mazeLevel #Validate this
+        self.maze = mazeLevel # Validate this
